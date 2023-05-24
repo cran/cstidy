@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+
+<title>Introduction</title>
+
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
+
+<style type="text/css">
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+
+<style type="text/css">
+code {
+white-space: pre;
+}
+.sourceCode {
+overflow: visible;
+}
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Introduction</h1>
+
+
+
+<div id="csfmt_rts_data_v1" class="section level1">
+<h1>csfmt_rts_data_v1</h1>
+<p>csfmt_rts_data_v1
+(<code>vignette(&quot;csfmt_rts_data_v1&quot;, package = &quot;cstidy&quot;)</code>) is a
+data format for real-time surveillance.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> cstidy<span class="sc">::</span><span class="fu">generate_test_data</span>()</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>cstidy<span class="sc">::</span><span class="fu">set_csfmt_rts_data_v1</span>(d)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Looking at the dataset</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>d[]</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     granularity_time granularity_geo country_iso3 location_code border     age</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:      isoyearweek          county          nor  county_nor42     NA    &lt;NA&gt;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:      isoyearweek          county          nor  county_nor32     NA    &lt;NA&gt;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:      isoyearweek          county          nor  county_nor33     NA    &lt;NA&gt;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:      isoyearweek          county          nor  county_nor56     NA    &lt;NA&gt;</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:      isoyearweek          county          nor  county_nor34     NA    &lt;NA&gt;</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:      isoyearweek          county          nor  county_nor15     NA    &lt;NA&gt;</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:      isoyearweek          county          nor  county_nor18     NA    &lt;NA&gt;</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:      isoyearweek          county          nor  county_nor03     NA    &lt;NA&gt;</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:      isoyearweek          county          nor  county_nor11     NA    &lt;NA&gt;</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:      isoyearweek          county          nor  county_nor40     NA    &lt;NA&gt;</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11:      isoyearweek          county          nor  county_nor55     NA    &lt;NA&gt;</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12:      isoyearweek          county          nor  county_nor50     NA    &lt;NA&gt;</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13:      isoyearweek          county          nor  county_nor39     NA    &lt;NA&gt;</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14:      isoyearweek          county          nor  county_nor46     NA    &lt;NA&gt;</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15:      isoyearweek          county          nor  county_nor31     NA    &lt;NA&gt;</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 16:      isoyearweek          county          nor  county_nor42     NA   total</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 17:      isoyearweek          county          nor  county_nor32     NA   total</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 18:      isoyearweek          county          nor  county_nor33     NA   total</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 19:      isoyearweek          county          nor  county_nor56     NA   total</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 20:      isoyearweek          county          nor  county_nor34     NA   total</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 21:      isoyearweek          county          nor  county_nor15     NA   total</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 22:      isoyearweek          county          nor  county_nor18     NA   total</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 23:      isoyearweek          county          nor  county_nor03     NA   total</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 24:      isoyearweek          county          nor  county_nor11     NA   total</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 25:      isoyearweek          county          nor  county_nor40     NA   total</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 26:      isoyearweek          county          nor  county_nor55     NA   total</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 27:      isoyearweek          county          nor  county_nor50     NA   total</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 28:      isoyearweek          county          nor  county_nor39     NA   total</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 29:      isoyearweek          county          nor  county_nor46     NA   total</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 30:      isoyearweek          county          nor  county_nor31     NA   total</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 31:      isoyearweek          county          nor  county_nor42     NA 000_005</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 32:      isoyearweek          county          nor  county_nor32     NA 000_005</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 33:      isoyearweek          county          nor  county_nor33     NA 000_005</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 34:      isoyearweek          county          nor  county_nor56     NA 000_005</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 35:      isoyearweek          county          nor  county_nor34     NA 000_005</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 36:      isoyearweek          county          nor  county_nor15     NA 000_005</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 37:      isoyearweek          county          nor  county_nor18     NA 000_005</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 38:      isoyearweek          county          nor  county_nor03     NA 000_005</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 39:      isoyearweek          county          nor  county_nor11     NA 000_005</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 40:      isoyearweek          county          nor  county_nor40     NA 000_005</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 41:      isoyearweek          county          nor  county_nor55     NA 000_005</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 42:      isoyearweek          county          nor  county_nor50     NA 000_005</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 43:      isoyearweek          county          nor  county_nor39     NA 000_005</span></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 44:      isoyearweek          county          nor  county_nor46     NA 000_005</span></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 45:      isoyearweek          county          nor  county_nor31     NA 000_005</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     granularity_time granularity_geo country_iso3 location_code border     age</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       sex isoyear isoweek isoyearweek    season seasonweek calyear calmonth</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:  &lt;NA&gt;    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:  &lt;NA&gt;    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:  &lt;NA&gt;    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:  &lt;NA&gt;    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:  &lt;NA&gt;    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:  &lt;NA&gt;    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:  &lt;NA&gt;    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:  &lt;NA&gt;    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:  &lt;NA&gt;    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:  &lt;NA&gt;    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11:  &lt;NA&gt;    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12:  &lt;NA&gt;    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13:  &lt;NA&gt;    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14:  &lt;NA&gt;    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15:  &lt;NA&gt;    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 16: total    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 17: total    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 18: total    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 19: total    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 20: total    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 21: total    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 22: total    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 23: total    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 24: total    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 25: total    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 26: total    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 27: total    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 28: total    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 29: total    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 30: total    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 31: total    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 32: total    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 33: total    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 34: total    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 35: total    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 36: total    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 37: total    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 38: total    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 39: total    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 40: total    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 41: total    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 42: total    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 43: total    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 44: total    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 45: total    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       sex isoyear isoweek isoyearweek    season seasonweek calyear calmonth</span></span>
+<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     calyearmonth       date deaths_n</span></span>
+<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:         &lt;NA&gt; 2022-01-23        4</span></span>
+<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:         &lt;NA&gt; 2022-01-23        4</span></span>
+<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:         &lt;NA&gt; 2022-01-23        8</span></span>
+<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:         &lt;NA&gt; 2022-01-23        3</span></span>
+<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:         &lt;NA&gt; 2022-01-23        4</span></span>
+<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:         &lt;NA&gt; 2022-01-23        4</span></span>
+<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:         &lt;NA&gt; 2022-01-23        7</span></span>
+<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:         &lt;NA&gt; 2022-01-23        3</span></span>
+<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:         &lt;NA&gt; 2022-01-23        6</span></span>
+<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:         &lt;NA&gt; 2022-01-23       10</span></span>
+<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11:         &lt;NA&gt; 2022-01-23        5</span></span>
+<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12:         &lt;NA&gt; 2022-01-23        5</span></span>
+<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13:         &lt;NA&gt; 2022-01-23        4</span></span>
+<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14:         &lt;NA&gt; 2022-01-23        4</span></span>
+<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15:         &lt;NA&gt; 2022-01-23        6</span></span>
+<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 16:         &lt;NA&gt; 2022-01-23        4</span></span>
+<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 17:         &lt;NA&gt; 2022-01-23        4</span></span>
+<span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 18:         &lt;NA&gt; 2022-01-23        8</span></span>
+<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 19:         &lt;NA&gt; 2022-01-23        3</span></span>
+<span id="cb1-120"><a href="#cb1-120" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 20:         &lt;NA&gt; 2022-01-23        4</span></span>
+<span id="cb1-121"><a href="#cb1-121" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 21:         &lt;NA&gt; 2022-01-23        4</span></span>
+<span id="cb1-122"><a href="#cb1-122" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 22:         &lt;NA&gt; 2022-01-23        7</span></span>
+<span id="cb1-123"><a href="#cb1-123" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 23:         &lt;NA&gt; 2022-01-23        3</span></span>
+<span id="cb1-124"><a href="#cb1-124" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 24:         &lt;NA&gt; 2022-01-23        6</span></span>
+<span id="cb1-125"><a href="#cb1-125" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 25:         &lt;NA&gt; 2022-01-23       10</span></span>
+<span id="cb1-126"><a href="#cb1-126" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 26:         &lt;NA&gt; 2022-01-23        5</span></span>
+<span id="cb1-127"><a href="#cb1-127" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 27:         &lt;NA&gt; 2022-01-23        5</span></span>
+<span id="cb1-128"><a href="#cb1-128" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 28:         &lt;NA&gt; 2022-01-23        4</span></span>
+<span id="cb1-129"><a href="#cb1-129" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 29:         &lt;NA&gt; 2022-01-23        4</span></span>
+<span id="cb1-130"><a href="#cb1-130" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 30:         &lt;NA&gt; 2022-01-23        6</span></span>
+<span id="cb1-131"><a href="#cb1-131" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 31:         &lt;NA&gt; 2022-01-23        4</span></span>
+<span id="cb1-132"><a href="#cb1-132" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 32:         &lt;NA&gt; 2022-01-23        4</span></span>
+<span id="cb1-133"><a href="#cb1-133" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 33:         &lt;NA&gt; 2022-01-23        8</span></span>
+<span id="cb1-134"><a href="#cb1-134" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 34:         &lt;NA&gt; 2022-01-23        3</span></span>
+<span id="cb1-135"><a href="#cb1-135" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 35:         &lt;NA&gt; 2022-01-23        4</span></span>
+<span id="cb1-136"><a href="#cb1-136" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 36:         &lt;NA&gt; 2022-01-23        4</span></span>
+<span id="cb1-137"><a href="#cb1-137" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 37:         &lt;NA&gt; 2022-01-23        7</span></span>
+<span id="cb1-138"><a href="#cb1-138" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 38:         &lt;NA&gt; 2022-01-23        3</span></span>
+<span id="cb1-139"><a href="#cb1-139" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 39:         &lt;NA&gt; 2022-01-23        6</span></span>
+<span id="cb1-140"><a href="#cb1-140" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 40:         &lt;NA&gt; 2022-01-23       10</span></span>
+<span id="cb1-141"><a href="#cb1-141" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 41:         &lt;NA&gt; 2022-01-23        5</span></span>
+<span id="cb1-142"><a href="#cb1-142" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 42:         &lt;NA&gt; 2022-01-23        5</span></span>
+<span id="cb1-143"><a href="#cb1-143" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 43:         &lt;NA&gt; 2022-01-23        4</span></span>
+<span id="cb1-144"><a href="#cb1-144" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 44:         &lt;NA&gt; 2022-01-23        4</span></span>
+<span id="cb1-145"><a href="#cb1-145" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 45:         &lt;NA&gt; 2022-01-23        6</span></span>
+<span id="cb1-146"><a href="#cb1-146" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     calyearmonth       date deaths_n</span></span></code></pre></div>
+<div id="smart-assignment" class="section level2">
+<h2>Smart assignment</h2>
+<p><code>csfmt_rts_data_v1</code> does smart assignment for time and
+geography.</p>
+<p>When the <strong>variables in bold</strong> are assigned using
+<code>:=</code>, the listed variables will be automatically imputed.</p>
+<p><strong>location_code</strong>:</p>
+<ul>
+<li>granularity_geo</li>
+<li>country_iso3</li>
+</ul>
+<p><strong>isoyear</strong>:</p>
+<ul>
+<li>granularity_time</li>
+<li>isoweek</li>
+<li>isoyearweek</li>
+<li>season</li>
+<li>seasonweek</li>
+<li>calyear</li>
+<li>calmonth</li>
+<li>calyearmonth</li>
+<li>date</li>
+</ul>
+<p><strong>isoyearweek</strong>:</p>
+<ul>
+<li>granularity_time</li>
+<li>isoyear</li>
+<li>isoweek</li>
+<li>season</li>
+<li>seasonweek</li>
+<li>calyear</li>
+<li>calmonth</li>
+<li>calyearmonth</li>
+<li>date</li>
+</ul>
+<p><strong>date</strong>:</p>
+<ul>
+<li>granularity_time</li>
+<li>isoyear</li>
+<li>isoweek</li>
+<li>isoyearweek</li>
+<li>season</li>
+<li>seasonweek</li>
+<li>calyear</li>
+<li>calmonth</li>
+<li>calyearmonth</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> cstidy<span class="sc">::</span><span class="fu">generate_test_data</span>()[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>cstidy<span class="sc">::</span><span class="fu">set_csfmt_rts_data_v1</span>(d)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Looking at the dataset</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>d[]</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    granularity_time granularity_geo country_iso3 location_code border  age  sex</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:      isoyearweek          county          nor  county_nor42     NA &lt;NA&gt; &lt;NA&gt;</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:      isoyearweek          county          nor  county_nor32     NA &lt;NA&gt; &lt;NA&gt;</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:      isoyearweek          county          nor  county_nor33     NA &lt;NA&gt; &lt;NA&gt;</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:      isoyearweek          county          nor  county_nor56     NA &lt;NA&gt; &lt;NA&gt;</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5:      isoyearweek          county          nor  county_nor34     NA &lt;NA&gt; &lt;NA&gt;</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    isoyear isoweek isoyearweek    season seasonweek calyear calmonth</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5:    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    calyearmonth       date deaths_n</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:         &lt;NA&gt; 2022-01-23        8</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:         &lt;NA&gt; 2022-01-23        7</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:         &lt;NA&gt; 2022-01-23        6</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:         &lt;NA&gt; 2022-01-23        2</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5:         &lt;NA&gt; 2022-01-23        7</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Smart assignment of time columns (note how granularity_time, isoyear, isoyearweek, date all change)</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>d[<span class="dv">1</span>,isoyearweek <span class="sc">:</span><span class="er">=</span> <span class="st">&quot;2021-01&quot;</span>]</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>d</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    granularity_time granularity_geo country_iso3 location_code border  age  sex</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:      isoyearweek          county          nor  county_nor42     NA &lt;NA&gt; &lt;NA&gt;</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:      isoyearweek          county          nor  county_nor32     NA &lt;NA&gt; &lt;NA&gt;</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:      isoyearweek          county          nor  county_nor33     NA &lt;NA&gt; &lt;NA&gt;</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:      isoyearweek          county          nor  county_nor56     NA &lt;NA&gt; &lt;NA&gt;</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5:      isoyearweek          county          nor  county_nor34     NA &lt;NA&gt; &lt;NA&gt;</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    isoyear isoweek isoyearweek    season seasonweek calyear calmonth</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:    2021       1     2021-01 2020/2021         24      NA       NA</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5:    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    calyearmonth       date deaths_n</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:         &lt;NA&gt; 2021-01-10        8</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:         &lt;NA&gt; 2022-01-23        7</span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:         &lt;NA&gt; 2022-01-23        6</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:         &lt;NA&gt; 2022-01-23        2</span></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5:         &lt;NA&gt; 2022-01-23        7</span></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="co"># Smart assignment of time columns (note how granularity_time, isoyear, isoyearweek, date all change)</span></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>d[<span class="dv">2</span>,isoyear <span class="sc">:</span><span class="er">=</span> <span class="dv">2019</span>]</span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>d</span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    granularity_time granularity_geo country_iso3 location_code border  age  sex</span></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:      isoyearweek          county          nor  county_nor42     NA &lt;NA&gt; &lt;NA&gt;</span></span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:          isoyear          county          nor  county_nor32     NA &lt;NA&gt; &lt;NA&gt;</span></span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:      isoyearweek          county          nor  county_nor33     NA &lt;NA&gt; &lt;NA&gt;</span></span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:      isoyearweek          county          nor  county_nor56     NA &lt;NA&gt; &lt;NA&gt;</span></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5:      isoyearweek          county          nor  county_nor34     NA &lt;NA&gt; &lt;NA&gt;</span></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    isoyear isoweek isoyearweek    season seasonweek calyear calmonth</span></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:    2021       1     2021-01 2020/2021         24      NA       NA</span></span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:    2019      52     2019-52      &lt;NA&gt;         NA      NA       NA</span></span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5:    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    calyearmonth       date deaths_n</span></span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:         &lt;NA&gt; 2021-01-10        8</span></span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:         &lt;NA&gt; 2019-12-29        7</span></span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:         &lt;NA&gt; 2022-01-23        6</span></span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:         &lt;NA&gt; 2022-01-23        2</span></span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5:         &lt;NA&gt; 2022-01-23        7</span></span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a><span class="co"># Smart assignment of time columns (note how granularity_time, isoyear, isoyearweek, date all change)</span></span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>d[<span class="dv">4</span><span class="sc">:</span><span class="dv">5</span>,date <span class="sc">:</span><span class="er">=</span> <span class="fu">as.Date</span>(<span class="st">&quot;2020-01-01&quot;</span>)]</span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>d</span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    granularity_time granularity_geo country_iso3 location_code border  age  sex</span></span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:      isoyearweek          county          nor  county_nor42     NA &lt;NA&gt; &lt;NA&gt;</span></span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:          isoyear          county          nor  county_nor32     NA &lt;NA&gt; &lt;NA&gt;</span></span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:      isoyearweek          county          nor  county_nor33     NA &lt;NA&gt; &lt;NA&gt;</span></span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:             date          county          nor  county_nor56     NA &lt;NA&gt; &lt;NA&gt;</span></span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5:             date          county          nor  county_nor34     NA &lt;NA&gt; &lt;NA&gt;</span></span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    isoyear isoweek isoyearweek    season seasonweek calyear calmonth</span></span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:    2021       1     2021-01 2020/2021         24      NA       NA</span></span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:    2019      52     2019-52      &lt;NA&gt;         NA      NA       NA</span></span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:    2020       1     2020-01 2019/2020         24    2020        1</span></span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5:    2020       1     2020-01 2019/2020         24    2020        1</span></span>
+<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    calyearmonth       date deaths_n</span></span>
+<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:         &lt;NA&gt; 2021-01-10        8</span></span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:         &lt;NA&gt; 2019-12-29        7</span></span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:         &lt;NA&gt; 2022-01-23        6</span></span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:     2020-M01 2020-01-01        2</span></span>
+<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5:     2020-M01 2020-01-01        7</span></span>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a><span class="co"># Smart assignment fails when multiple time columns are set</span></span>
+<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a>d[<span class="dv">1</span>,<span class="fu">c</span>(<span class="st">&quot;isoyear&quot;</span>,<span class="st">&quot;isoyearweek&quot;</span>) <span class="sc">:</span><span class="er">=</span> .(<span class="dv">2021</span>,<span class="st">&quot;2021-01&quot;</span>)]</span>
+<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in `[.csfmt_rts_data_v1`(d, 1, `:=`(c(&quot;isoyear&quot;, &quot;isoyearweek&quot;), :</span></span>
+<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Multiple time variables specified. Smart-assignment disabled.</span></span>
+<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a>d</span>
+<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    granularity_time granularity_geo country_iso3 location_code border  age  sex</span></span>
+<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:      isoyearweek          county          nor  county_nor42     NA &lt;NA&gt; &lt;NA&gt;</span></span>
+<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:          isoyear          county          nor  county_nor32     NA &lt;NA&gt; &lt;NA&gt;</span></span>
+<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:      isoyearweek          county          nor  county_nor33     NA &lt;NA&gt; &lt;NA&gt;</span></span>
+<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:             date          county          nor  county_nor56     NA &lt;NA&gt; &lt;NA&gt;</span></span>
+<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5:             date          county          nor  county_nor34     NA &lt;NA&gt; &lt;NA&gt;</span></span>
+<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    isoyear isoweek isoyearweek    season seasonweek calyear calmonth</span></span>
+<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:    2021       1     2021-01 2020/2021         24      NA       NA</span></span>
+<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:    2019      52     2019-52      &lt;NA&gt;         NA      NA       NA</span></span>
+<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:    2020       1     2020-01 2019/2020         24    2020        1</span></span>
+<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5:    2020       1     2020-01 2019/2020         24    2020        1</span></span>
+<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    calyearmonth       date deaths_n</span></span>
+<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:         &lt;NA&gt; 2021-01-10        8</span></span>
+<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:         &lt;NA&gt; 2019-12-29        7</span></span>
+<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:         &lt;NA&gt; 2022-01-23        6</span></span>
+<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:     2020-M01 2020-01-01        2</span></span>
+<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5:     2020-M01 2020-01-01        7</span></span>
+<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a><span class="co"># Smart assignment of geo columns</span></span>
+<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a>d[<span class="dv">1</span>,<span class="fu">c</span>(<span class="st">&quot;location_code&quot;</span>) <span class="sc">:</span><span class="er">=</span> .(<span class="st">&quot;norge&quot;</span>)]</span>
+<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a>d</span>
+<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    granularity_time granularity_geo country_iso3 location_code border  age  sex</span></span>
+<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:      isoyearweek          nation          nor         norge     NA &lt;NA&gt; &lt;NA&gt;</span></span>
+<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:          isoyear          county          nor  county_nor32     NA &lt;NA&gt; &lt;NA&gt;</span></span>
+<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:      isoyearweek          county          nor  county_nor33     NA &lt;NA&gt; &lt;NA&gt;</span></span>
+<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:             date          county          nor  county_nor56     NA &lt;NA&gt; &lt;NA&gt;</span></span>
+<span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5:             date          county          nor  county_nor34     NA &lt;NA&gt; &lt;NA&gt;</span></span>
+<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    isoyear isoweek isoyearweek    season seasonweek calyear calmonth</span></span>
+<span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:    2021       1     2021-01 2020/2021         24      NA       NA</span></span>
+<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:    2019      52     2019-52      &lt;NA&gt;         NA      NA       NA</span></span>
+<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:    2022       3     2022-03 2021/2022         26      NA       NA</span></span>
+<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:    2020       1     2020-01 2019/2020         24    2020        1</span></span>
+<span id="cb2-129"><a href="#cb2-129" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5:    2020       1     2020-01 2019/2020         24    2020        1</span></span>
+<span id="cb2-130"><a href="#cb2-130" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    calyearmonth       date deaths_n</span></span>
+<span id="cb2-131"><a href="#cb2-131" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:         &lt;NA&gt; 2021-01-10        8</span></span>
+<span id="cb2-132"><a href="#cb2-132" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:         &lt;NA&gt; 2019-12-29        7</span></span>
+<span id="cb2-133"><a href="#cb2-133" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:         &lt;NA&gt; 2022-01-23        6</span></span>
+<span id="cb2-134"><a href="#cb2-134" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:     2020-M01 2020-01-01        2</span></span>
+<span id="cb2-135"><a href="#cb2-135" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5:     2020-M01 2020-01-01        7</span></span>
+<span id="cb2-136"><a href="#cb2-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-137"><a href="#cb2-137" aria-hidden="true" tabindex="-1"></a><span class="co"># Collapsing down to different levels, and healing the dataset </span></span>
+<span id="cb2-138"><a href="#cb2-138" aria-hidden="true" tabindex="-1"></a><span class="co"># (so that it can be worked on further with regards to real time surveillance)</span></span>
+<span id="cb2-139"><a href="#cb2-139" aria-hidden="true" tabindex="-1"></a>d[, .(<span class="at">deaths_n =</span> <span class="fu">sum</span>(deaths_n), <span class="at">location_code =</span> <span class="st">&quot;norge&quot;</span>), keyby<span class="ot">=</span>.(granularity_time)] <span class="sc">%&gt;%</span></span>
+<span id="cb2-140"><a href="#cb2-140" aria-hidden="true" tabindex="-1"></a>  cstidy<span class="sc">::</span><span class="fu">set_csfmt_rts_data_v1</span>(<span class="at">create_unified_columns =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-141"><a href="#cb2-141" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span>
+<span id="cb2-142"><a href="#cb2-142" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    granularity_time deaths_n location_code date</span></span>
+<span id="cb2-143"><a href="#cb2-143" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:             date        9         norge &lt;NA&gt;</span></span>
+<span id="cb2-144"><a href="#cb2-144" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:          isoyear        7         norge &lt;NA&gt;</span></span>
+<span id="cb2-145"><a href="#cb2-145" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:      isoyearweek       14         norge &lt;NA&gt;</span></span>
+<span id="cb2-146"><a href="#cb2-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-147"><a href="#cb2-147" aria-hidden="true" tabindex="-1"></a><span class="co"># Collapsing to different levels, and removing the class csfmt_rts_data_v1 because</span></span>
+<span id="cb2-148"><a href="#cb2-148" aria-hidden="true" tabindex="-1"></a><span class="co"># it is going to be used in new output/analyses</span></span>
+<span id="cb2-149"><a href="#cb2-149" aria-hidden="true" tabindex="-1"></a>d[, .(<span class="at">deaths_n =</span> <span class="fu">sum</span>(deaths_n), <span class="at">location_code =</span> <span class="st">&quot;norge&quot;</span>), keyby<span class="ot">=</span>.(granularity_time)] <span class="sc">%&gt;%</span></span>
+<span id="cb2-150"><a href="#cb2-150" aria-hidden="true" tabindex="-1"></a>  cstidy<span class="sc">::</span><span class="fu">remove_class_csfmt_rts_data</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb2-151"><a href="#cb2-151" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span>
+<span id="cb2-152"><a href="#cb2-152" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    granularity_time deaths_n location_code</span></span>
+<span id="cb2-153"><a href="#cb2-153" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:             date        9         norge</span></span>
+<span id="cb2-154"><a href="#cb2-154" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:          isoyear        7         norge</span></span>
+<span id="cb2-155"><a href="#cb2-155" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:      isoyearweek       14         norge</span></span></code></pre></div>
+</div>
+<div id="summary" class="section level2">
+<h2>Summary</h2>
+<p>We need a way to easily summarize the data structure of a
+dataset.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>cstidy<span class="sc">::</span><span class="fu">generate_test_data</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  cstidy<span class="sc">::</span><span class="fu">set_csfmt_rts_data_v1</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; granularity_time</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✅ No errors</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; granularity_geo</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✅ No errors</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; country_iso3</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✅ No errors</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; location_code</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✅ No errors</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; border</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ❌ Errors:</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; - NA exists (not allowed)</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; age</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✅ No errors</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; sex</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✅ No errors</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; isoyear</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✅ No errors</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; isoweek</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✅ No errors</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; isoyearweek</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✅ No errors</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; season</span></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✅ No errors</span></span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; seasonweek</span></span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✅ No errors</span></span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; calyear</span></span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✅ No errors</span></span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; calmonth</span></span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✅ No errors</span></span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; calyearmonth</span></span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✅ No errors</span></span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; date</span></span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✅ No errors</span></span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; granularity_time (character):</span></span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  - isoyearweek (n = 45)</span></span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; granularity_geo (character):</span></span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  - county (n = 45)</span></span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; country_iso3 (character):</span></span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  - nor (n = 45)</span></span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; location_code (character)</span></span>
+<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; border (integer):</span></span>
+<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  - &lt;NA&gt; (n = 45)</span></span>
+<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; age (character):</span></span>
+<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  - 000_005 (n = 15)</span></span>
+<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  - &lt;NA&gt;    (n = 15)</span></span>
+<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  - total   (n = 15)</span></span>
+<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; sex (character):</span></span>
+<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  - &lt;NA&gt;  (n = 15)</span></span>
+<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  - total (n = 30)</span></span>
+<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; isoyear (integer):</span></span>
+<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  - 2022 (n = 45)</span></span>
+<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; isoweek (integer)</span></span>
+<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; isoyearweek (character)</span></span>
+<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; season (character):</span></span>
+<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  - 2021/2022 (n = 45)</span></span>
+<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; seasonweek (numeric)</span></span>
+<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; calyear (integer)</span></span>
+<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; calmonth (integer)</span></span>
+<span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; calyearmonth (character)</span></span>
+<span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; date (Date)</span></span>
+<span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; deaths_n (integer)</span></span></code></pre></div>
+</div>
+<div id="identifying-data-structure-of-one-column" class="section level2">
+<h2>Identifying data structure of one column</h2>
+<p>We need a way to easily summarize the data structure of one column
+inside a dataset.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>cstidy<span class="sc">::</span><span class="fu">generate_test_data</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  cstidy<span class="sc">::</span><span class="fu">set_csfmt_rts_data_v1</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  cstidy<span class="sc">::</span><span class="fu">identify_data_structure</span>(<span class="st">&quot;deaths_n&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>()</span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+</div>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

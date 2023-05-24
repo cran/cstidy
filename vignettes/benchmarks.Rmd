@@ -1,0 +1,16 @@
+---
+title: "Benchmarks"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Benchmarks}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options:
+  chunk_output_type: console
+---
+
+
+
+## set_csfmt_rts_data_v1
+
+<img src="benchmarks-unnamed-chunk-1-1.png" alt="plot of chunk unnamed-chunk-1" width="100%" />

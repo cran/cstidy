@@ -1,0 +1,82 @@
+---
+title: "Benchmarks"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Benchmarks}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options:
+  chunk_output_type: console
+---
+
+```{r setup, include = FALSE}
+if(!isTRUE(getOption('knitr.in.progress'))){
+  base_folder <- "vignettes/"
+} else {
+  base_folder <- ""
+}
+
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  out.width = "100%",
+  fig.width = 7,
+  fig.height = 4, dpi = 150, fig.path = "benchmarks-"
+)
+
+library(data.table)
+library(magrittr)
+library(ggplot2)
+```
+
+## set_csfmt_rts_data_v1
+
+```{r echo=FALSE, results='asis'}
+skeleton <- expand.grid(
+  location_code = csdata::nor_locations_names()[granularity_geo %in% c("nation", "county", "municip")]$location_code,
+  granularity_time = "date",
+  date = seq(as.Date("2001-01-01"), as.Date("2020-12-31"), 1),
+  age = c(
+    "000_010",
+    "011_020",
+    "021_030",
+    "031_040",
+    "041_050",
+    "051_060",
+    "061_070",
+    "071_080",
+    "081_090",
+    "091_100"
+  ),
+  sex = c("total", "male", "female"),
+  stringsAsFactors = FALSE
+)
+setDT(skeleton)
+a0 <- Sys.time()
+cstidy::set_csfmt_rts_data_v1(skeleton)
+a1 <- Sys.time()
+time_to_run_sec <- round(as.numeric(difftime(a1, a0, units = "secs")), 1)
+rows_n <- nrow(skeleton)
+
+if(file.exists(paste0(base_folder,"benchmarks-csfmt_rts_data_v1.RDS"))){
+  d_performance <- readRDS(paste0(base_folder,"benchmarks-csfmt_rts_data_v1.RDS"))
+} else {
+  d_performance <- list()
+}
+d_performance[[as.character(lubridate::today())]] <- data.frame(
+  version = lubridate::today(),
+  time_to_run_sec = time_to_run_sec,
+  rows_n = rows_n
+)
+saveRDS(d_performance, paste0(base_folder,"benchmarks-csfmt_rts_data_v1.RDS"))
+
+pd <- rbindlist(d_performance)
+
+q <- ggplot(pd, aes(x=version, y = time_to_run_sec, group = 1))
+q <- q + geom_line()
+q <- q + scale_y_continuous("Seconds")
+q <- q + scale_x_date("Version")
+q <- q + labs(title="cstidy::set_csfmt_rts_data_v1 applied to an 80 million row dataset")
+q <- q + expand_limits(y=0)
+q
+```
