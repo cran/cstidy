@@ -24,28 +24,10 @@ d <- rbind(
     example = "2021-12-31"
   ),
   data.frame(
-    granularity_time = "isoweek (numeric)",
-    class = "numeric",
-    fn = "cstime::isoweek_n",
-    example = "1"
-  ),
-  data.frame(
-    granularity_time = "isoweek (character)",
-    class = "character",
-    fn = "cstime::isoweek_c",
-    example = "\"01\""
-  ),
-  data.frame(
     granularity_time = "isoyear (numeric)",
     class = "character",
     fn = "cstime::isoyear_n",
     example = "2021"
-  ),
-  data.frame(
-    granularity_time = "isoyear (character)",
-    class = "character",
-    fn = "cstime::isoyear_c",
-    example = "\"2021\""
   ),
   data.frame(
     granularity_time = "isoyearweek",
@@ -77,43 +59,6 @@ gt::gt(d) %>%
     class ~ "15%",
     fn ~ "20%",
     example ~ "55%"
-  ) %>%
-  gt::tab_style(
-    style = list(
-      gt::cell_text(decorate = "line-through")
-    ),
-    locations = gt::cells_body(
-      columns = gt::everything(),
-      rows = stringr::str_detect(granularity_time, "character")
-    )
-  ) %>%
-  gt::tab_footnote(
-    footnote = "isoweek (numeric) is used when it is a standalone variable.",
-    locations = gt::cells_body(
-      columns = granularity_time,
-      rows = granularity_time == "isoweek (numeric)"
-    )
-  ) %>%
-  gt::tab_footnote(
-    footnote = "isoweek (character) is only used internally within isoyearweek. Internal use is demarcated by a line through the text.",
-    locations = gt::cells_body(
-      columns = granularity_time,
-      rows = granularity_time == "isoweek (character)"
-    )
-  ) %>%
-  gt::tab_footnote(
-    footnote = "isoyear (numeric) is used when it is a standalone variable.",
-    locations = gt::cells_body(
-      columns = granularity_time,
-      rows = granularity_time == "isoyear (numeric)"
-    )
-  ) %>%
-  gt::tab_footnote(
-    footnote = "isoyear (character) is only used internally within isoyearweek. Internal use is demarcated by a line through the text.",
-    locations = gt::cells_body(
-      columns = granularity_time,
-      rows = granularity_time == "isoyear (character)"
-    )
   ) %>%
   gt::tab_footnote(
     footnote = "If the event is ongoing, then the 'to' date should be 9999_09_09.",
@@ -345,7 +290,7 @@ d <- rbind(
   data.frame(
     variable = "isoyear",
     accepted_values = "YYYY",
-    definition = "Use function cstime::isoyear_n"
+    definition = "Use function cstime::*_to_isoyear_n"
   ),
   data.frame(
     variable = "isoweek",
@@ -355,7 +300,17 @@ d <- rbind(
   data.frame(
     variable = "isoyearweek",
     accepted_values = "\"YYYY-WW\"",
-    definition = "Use function cstime::isoyearweek_c"
+    definition = "Use function cstime::*_to_isoyearweek_c"
+  ),
+    data.frame(
+    variable = "isoquarter",
+    accepted_values = "1, 2, 3, 4",
+    definition = "Use functions cstime::*_to_isoquarter_n"
+  ),
+  data.frame(
+    variable = "isoyearquarter",
+    accepted_values = "\"2021-Q01\"",
+    definition = "Use function cstime::*_to_isoyearquarter_c"
   ),
   data.frame(
     variable = "season",
@@ -404,7 +359,7 @@ gt::gt(d) %>%
   gt::cols_align(
     align = "left"
   ) %>%
-  gt::tab_header(title = "Unified columns (16) in the csverse format csfmt_rts_data_v1") %>%
+  gt::tab_header(title = "Unified columns (18) in the csverse format csfmt_rts_data_v2") %>%
   gt::cols_label(
     variable = "Variable",
     accepted_values = "Accepted values",
@@ -537,7 +492,7 @@ gt::gt(d) %>%
   gt::cols_align(
     align = "left"
   ) %>%
-  gt::tab_header(title = "Context-specific columns in the csverse format csfmt_rts_data_v1") %>%
+  gt::tab_header(title = "Context-specific columns in the csverse format csfmt_rts_data_v2") %>%
   gt::cols_label(
     x = "",
     examples = "Examples",
@@ -570,7 +525,7 @@ gt::gt(d) %>%
 
 ## -----------------------------------------------------------------------------
 d <- cstidy::generate_test_data()[1:5]
-cstidy::set_csfmt_rts_data_v1(d)
+cstidy::set_csfmt_rts_data_v2(d)
 
 # Looking at the dataset
 d[]
@@ -598,15 +553,15 @@ d
 # Collapsing down to different levels, and healing the dataset
 # (so that it can be worked on further with regards to real time surveillance)
 d[, .(deaths_n = sum(deaths_n), location_code = "norge"), keyby = .(granularity_time)] %>%
-  cstidy::set_csfmt_rts_data_v1(create_unified_columns = TRUE) %>%
+  cstidy::set_csfmt_rts_data_v2(create_unified_columns = TRUE) %>%
   print()
 
 # Collapsing down to different levels, without healing the dataset and without
-# removing the class csfmt_rts_data_v1 (this is uncommon)
+# removing the class csfmt_rts_data_v2 (this is uncommon)
 d[, .(deaths_n = sum(deaths_n), location_code = "norge"), keyby = .(granularity_time)] %>%
   print()
 
-# Collapsing to different levels, and removing the class csfmt_rts_data_v1 because
+# Collapsing to different levels, and removing the class csfmt_rts_data_v2 because
 # it is going to be used in new output/analyses
 d[, .(deaths_n = sum(deaths_n), location_code = "norge"), keyby = .(granularity_time)] %>%
   cstidy::remove_class_csfmt_rts_data() %>%
@@ -614,24 +569,24 @@ d[, .(deaths_n = sum(deaths_n), location_code = "norge"), keyby = .(granularity_
 
 ## -----------------------------------------------------------------------------
 cstidy::generate_test_data() %>%
-  cstidy::set_csfmt_rts_data_v1() %>%
+  cstidy::set_csfmt_rts_data_v2() %>%
   dplyr::filter(location_code == "county03") %>%
   cstidy::expand_time_to(max_isoyearweek = "2022-08") %>%
   print()
 
 ## -----------------------------------------------------------------------------
 cstidy::generate_test_data() %>%
-  cstidy::set_csfmt_rts_data_v1() %>%
+  cstidy::set_csfmt_rts_data_v2() %>%
   cstidy::unique_time_series()
 
 ## -----------------------------------------------------------------------------
 cstidy::generate_test_data() %>%
-  cstidy::set_csfmt_rts_data_v1() %>%
+  cstidy::set_csfmt_rts_data_v2() %>%
   summary()
 
 ## -----------------------------------------------------------------------------
 cstidy::generate_test_data() %>%
-  cstidy::set_csfmt_rts_data_v1() %>%
+  cstidy::set_csfmt_rts_data_v2() %>%
   cstidy::identify_data_structure("deaths_n") %>%
   plot()
 

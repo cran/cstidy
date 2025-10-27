@@ -1,119 +1,133 @@
-formats$csfmt_rts_data_v1 <- list()
-formats$csfmt_rts_data_v1$unified <- list()
-formats$csfmt_rts_data_v1$unified$granularity_time <- list(
+formats$csfmt_rts_data_v2 <- list()
+formats$csfmt_rts_data_v2$unified <- list()
+formats$csfmt_rts_data_v2$unified$granularity_time <- list(
   NA_allowed = FALSE,
   NA_class = NA_character_,
-  values_allowed = c("date", "isoyearweek", "isoyear"),
+  values_allowed = c("date", "isoyearweek", "isoyear", "season"),
   class = "character"
 )
 
 # csdata::nor_locations_names()
-formats$csfmt_rts_data_v1$unified$granularity_geo <- list(
+formats$csfmt_rts_data_v2$unified$granularity_geo <- list(
   NA_allowed = FALSE,
   NA_class = NA_character_,
   values_allowed = unique(csdata::nor_locations_names()$granularity_geo),
   class = "character"
 )
 
-formats$csfmt_rts_data_v1$unified$country_iso3 <- list(
+formats$csfmt_rts_data_v2$unified$country_iso3 <- list(
   NA_allowed = FALSE,
   NA_class = NA_character_,
   values_allowed = c("nor", "den", "swe", "fin"),
   class = "character"
 )
 
-formats$csfmt_rts_data_v1$unified$location_code <- list(
+formats$csfmt_rts_data_v2$unified$location_code <- list(
   NA_allowed = FALSE,
   NA_class = NA_character_,
   values_allowed = NULL,
   class = "character"
 )
 
-formats$csfmt_rts_data_v1$unified$border <- list(
+formats$csfmt_rts_data_v2$unified$border <- list(
   NA_allowed = FALSE,
   NA_class = NA_integer_,
   values_allowed = 2020,
   class = "integer"
 )
 
-formats$csfmt_rts_data_v1$unified$age <- list(
+formats$csfmt_rts_data_v2$unified$age <- list(
   NA_allowed = TRUE,
   NA_class = NA_character_,
   values_allowed = NULL,
   class = "character"
 )
 
-formats$csfmt_rts_data_v1$unified$sex <- list(
+formats$csfmt_rts_data_v2$unified$sex <- list(
   NA_allowed = TRUE,
   NA_class = NA_character_,
   values_allowed = NULL,
   class = "character"
 )
 
-formats$csfmt_rts_data_v1$unified$isoyear <- list(
+formats$csfmt_rts_data_v2$unified$isoyear <- list(
   NA_allowed = TRUE,
   NA_class = NA_integer_,
   values_allowed = NULL,
   class = "integer"
 )
 
-formats$csfmt_rts_data_v1$unified$isoweek <- list(
+formats$csfmt_rts_data_v2$unified$isoweek <- list(
   NA_allowed = TRUE,
   NA_class = NA_integer_,
   values_allowed = NULL,
   class = "integer"
 )
 
-formats$csfmt_rts_data_v1$unified$isoyearweek <- list(
+formats$csfmt_rts_data_v2$unified$isoyearweek <- list(
   NA_allowed = FALSE,
   NA_class = NA_character_,
   values_allowed = NULL,
   class = "character"
 )
 
-formats$csfmt_rts_data_v1$unified$season <- list(
+formats$csfmt_rts_data_v2$unified$isoquarter <- list(
+  NA_allowed = TRUE,
+  NA_class = NA_integer_,
+  values_allowed = NULL,
+  class = "integer"
+)
+
+formats$csfmt_rts_data_v2$unified$isoyearquarter <- list(
+  NA_allowed = FALSE,
+  NA_class = NA_character_,
+  values_allowed = NULL,
+  class = "character"
+)
+
+formats$csfmt_rts_data_v2$unified$season <- list(
   NA_allowed = TRUE,
   NA_class = NA_character_,
   values_allowed = NULL,
   class = "character"
 )
 
-formats$csfmt_rts_data_v1$unified$seasonweek <- list(
+formats$csfmt_rts_data_v2$unified$seasonweek <- list(
   NA_allowed = TRUE,
   NA_class = NA_real_,
   values_allowed = NULL,
   class = "numeric"
 )
 
-formats$csfmt_rts_data_v1$unified$calyear <- list(
+formats$csfmt_rts_data_v2$unified$calyear <- list(
   NA_allowed = TRUE,
   NA_class = NA_integer_,
   values_allowed = NULL,
   class = "integer"
 )
 
-formats$csfmt_rts_data_v1$unified$calmonth <- list(
+formats$csfmt_rts_data_v2$unified$calmonth <- list(
   NA_allowed = TRUE,
   NA_class = NA_integer_,
   values_allowed = NULL,
   class = "integer"
 )
 
-formats$csfmt_rts_data_v1$unified$calyearmonth <- list(
+formats$csfmt_rts_data_v2$unified$calyearmonth <- list(
   NA_allowed = TRUE,
   NA_class = NA_character_,
   values_allowed = NULL,
   class = "character"
 )
 
-formats$csfmt_rts_data_v1$unified$date <- list(
+formats$csfmt_rts_data_v2$unified$date <- list(
   NA_allowed = FALSE,
   NA_class = as.Date(NA),
   values_allowed = NULL,
   class = "Date"
 )
 
-# print.csfmt_rts_data_v1 <- function(x, ...) {
+# print.csfmt_rts_data_v2 <- function(x, ...) {
 #   # https://cran.r-project.org/web/packages/data.table/vignettes/datatable-faq.html#ok-thanks.-what-was-so-difficult-about-the-result-of-dti-col-value-being-returned-invisibly
 #   if (!data.table::shouldPrint(x)) {
 #     return(invisible(x))
@@ -122,7 +136,7 @@ formats$csfmt_rts_data_v1$unified$date <- list(
 #   dots <- list(...)
 #   print_dots_before_row <- 999999999999999
 #   if (nrow(x) == 0) {
-#     cat(glue::glue("csfmt_rts_data_v1 with {ncol(x)} columns and 0 rows"))
+#     cat(glue::glue("csfmt_rts_data_v2 with {ncol(x)} columns and 0 rows"))
 #     cat(names(x))
 #     return(invisible(x))
 #   } else if (nrow(x) > 100) {
@@ -230,31 +244,33 @@ formats$csfmt_rts_data_v1$unified$date <- list(
 #   }
 # }
 
-# heal_time_csfmt_rts_data_v1 <- function(x, cols, from){
+# heal_time_csfmt_rts_data_v2 <- function(x, cols, from){
 #   print(x)
 #   print(cols)
 #   print(from)
-#   csutil::apply_fn_via_hash_table(x, heal_time_csfmt_rts_data_v1_internal, cols=cols, from=from)
+#   csutil::apply_fn_via_hash_table(x, heal_time_csfmt_rts_data_v2_internal, cols=cols, from=from)
 # }
 
-#' Provides corresponding healed times (deprecated)
+#' Provides corresponding healed times
 #' @param x A vector containing either dates, isoyearweek, or isoyear.
 #' @param cols Columns to restrict the output to.
 #' @param granularity_time date, isoyearweek, or isoyear, depending on the values contained in x.
 #' @returns data.table, a dataset with time columns corresponding to the values given in x.
 #' @export
-heal_time_csfmt_rts_data_v1 <- function(x, cols, granularity_time = "date"){
+heal_time_csfmt_rts_data_v2 <- function(x, cols, granularity_time = "date"){
   ..columns <- NULL
   rm("..columns")
   . <- NULL
 
-  stopifnot(granularity_time %in% c("date", "isoyearweek", "isoyear"))
+  stopifnot(granularity_time %in% c("date", "season", "isoyearweek", "isoyear"))
   if(granularity_time=="date"){
     columns <- c(
       "granularity_time",
       "isoyear",
       "isoweek",
       "isoyearweek",
+      "isoquarter",
+      "isoyearquarter",
       "season",
       "seasonweek",
       "calyear",
@@ -263,7 +279,28 @@ heal_time_csfmt_rts_data_v1 <- function(x, cols, granularity_time = "date"){
     )
     columns <- columns[columns %in% cols]
     return(
-      csfmt_rts_data_v1_date_to[
+      csfmt_rts_data_v2_date_to[
+        .(x),
+        ..columns
+      ]
+    )
+  } else if(granularity_time=="season"){
+    columns <- c(
+      "granularity_time",
+      "isoyear",
+      "isoweek",
+      "isoyearweek",
+      "isoquarter",
+      "isoyearquarter",
+      "seasonweek",
+      "calyear",
+      "calmonth",
+      "calyearmonth",
+      "date"
+    )
+    columns <- columns[columns %in% cols]
+    return(
+      csfmt_rts_data_v2_season_to[
         .(x),
         ..columns
       ]
@@ -273,6 +310,8 @@ heal_time_csfmt_rts_data_v1 <- function(x, cols, granularity_time = "date"){
       "granularity_time",
       "isoyear",
       "isoweek",
+      "isoquarter",
+      "isoyearquarter",
       "season",
       "seasonweek",
       "calyear",
@@ -282,7 +321,7 @@ heal_time_csfmt_rts_data_v1 <- function(x, cols, granularity_time = "date"){
     )
     columns <- columns[columns %in% cols]
     return(
-      csfmt_rts_data_v1_isoyearweek_to[
+      csfmt_rts_data_v2_isoyearweek_to[
         .(x),
         ..columns
       ]
@@ -301,7 +340,7 @@ heal_time_csfmt_rts_data_v1 <- function(x, cols, granularity_time = "date"){
     )
     columns <- columns[columns %in% cols]
     return(
-      csfmt_rts_data_v1_isoyear_to[
+      csfmt_rts_data_v2_isoyear_to[
         .(x),
         ..columns
       ]
@@ -309,10 +348,10 @@ heal_time_csfmt_rts_data_v1 <- function(x, cols, granularity_time = "date"){
   }
 }
 
-#' @method [ csfmt_rts_data_v1
+#' @method [ csfmt_rts_data_v2
 #' @returns No return value, called for side effect of assigning values in a column.
 #' @export
-"[.csfmt_rts_data_v1" <- function(x, ...) {
+"[.csfmt_rts_data_v2" <- function(x, ...) {
   # original call
   modified_call <- orig_call <- sys.calls()[[sys.nframe() - 1]]
   healing_calls <- list()
@@ -336,10 +375,10 @@ heal_time_csfmt_rts_data_v1 <- function(x, cols, granularity_time = "date"){
   if (length(i) == 0) {
     # no assignment
     remove_class_csfmt_rts_data(x)
-    on.exit(set_csfmt_rts_data_v1(x, create_unified_columns = FALSE, heal = FALSE))
+    on.exit(set_csfmt_rts_data_v2(x, create_unified_columns = FALSE, heal = FALSE))
 
     y <- eval(parse(text = deparse(modified_call)), envir = parent.frame(1:2))
-    set_csfmt_rts_data_v1(y, create_unified_columns = FALSE, heal = FALSE)
+    set_csfmt_rts_data_v2(y, create_unified_columns = FALSE, heal = FALSE)
     return(invisible(y))
   } else if (length(i) == 1) {
     # smart-assignment for time ----
@@ -347,7 +386,7 @@ heal_time_csfmt_rts_data_v1 <- function(x, cols, granularity_time = "date"){
     lhs <- unlist(lapply(orig_call[[i]][[2]], function(x) {
       deparse(x)
     }))
-    time_vars <- c("isoyear", "isoyearweek", "date")
+    time_vars <- c("isoyear", "isoyearweek", "season", "date")
     time_vars_with_quotes <- c(time_vars, paste0("\"", time_vars, "\""))
     time_var_modified_index <- which(lhs %in% time_vars_with_quotes)
 
@@ -372,14 +411,17 @@ heal_time_csfmt_rts_data_v1 <- function(x, cols, granularity_time = "date"){
       }
 
       if (time_var_modified == "isoyear") {
-        healing_options <- names(heal_time_csfmt_rts_data_v1(2020, names(x), granularity_time="isoyear"))
-        healing_function <- glue::glue('cstidy::heal_time_csfmt_rts_data_v1(isoyear, c("{paste0(healing_options, collapse="\\",\\"")}"), granularity_time=\"isoyear\")')
+        healing_options <- names(heal_time_csfmt_rts_data_v2(2020, names(x), granularity_time="isoyear"))
+        healing_function <- glue::glue('cstidy::heal_time_csfmt_rts_data_v2(isoyear, c("{paste0(healing_options, collapse="\\",\\"")}"), granularity_time=\"isoyear\")')
       } else if (time_var_modified == "isoyearweek") {
-        healing_options <- names(heal_time_csfmt_rts_data_v1("2020-01", names(x), granularity_time="isoyearweek"))
-        healing_function <- glue::glue('cstidy::heal_time_csfmt_rts_data_v1(isoyearweek, c("{paste0(healing_options, collapse="\\",\\"")}"), granularity_time=\"isoyearweek\")')
+        healing_options <- names(heal_time_csfmt_rts_data_v2("2020-01", names(x), granularity_time="isoyearweek"))
+        healing_function <- glue::glue('cstidy::heal_time_csfmt_rts_data_v2(isoyearweek, c("{paste0(healing_options, collapse="\\",\\"")}"), granularity_time=\"isoyearweek\")')
+      } else if (time_var_modified == "season") {
+        healing_options <- names(heal_time_csfmt_rts_data_v2("2020/2021", names(x), granularity_time="season"))
+        healing_function <- glue::glue('cstidy::heal_time_csfmt_rts_data_v2(season, c("{paste0(healing_options, collapse="\\",\\"")}"), granularity_time=\"season\")')
       } else if (time_var_modified == "date") {
-        healing_options <- names(heal_time_csfmt_rts_data_v1(as.Date("2020-01-01"), names(x), granularity_time="date"))
-        healing_function <- glue::glue('cstidy::heal_time_csfmt_rts_data_v1(date, c("{paste0(healing_options, collapse="\\",\\"")}"), granularity_time=\"date\")')
+        healing_options <- names(heal_time_csfmt_rts_data_v2(as.Date("2020-01-01"), names(x), granularity_time="date"))
+        healing_function <- glue::glue('cstidy::heal_time_csfmt_rts_data_v2(date, c("{paste0(healing_options, collapse="\\",\\"")}"), granularity_time=\"date\")')
       } else {
         healing_options <- NULL
         healing_function <- NULL
@@ -462,7 +504,7 @@ heal_time_csfmt_rts_data_v1 <- function(x, cols, granularity_time = "date"){
     # print(healing_calls)
 
     remove_class_csfmt_rts_data(x)
-    on.exit(set_csfmt_rts_data_v1(x, create_unified_columns = FALSE, heal = FALSE))
+    on.exit(set_csfmt_rts_data_v2(x, create_unified_columns = FALSE, heal = FALSE))
 
     eval(parse(text = deparse(modified_call)), envir = parent.frame(1:2))
     for (i in seq_along(healing_calls)) {
@@ -473,12 +515,12 @@ heal_time_csfmt_rts_data_v1 <- function(x, cols, granularity_time = "date"){
   }
 }
 
-heal.csfmt_rts_data_v1 <- function(x, ...) {
+heal.csfmt_rts_data_v2 <- function(x, ...) {
   granularity_time <- NULL
   original_granularity_time_32423432 <- NULL
   . <- NULL
 
-  assert_classes.csfmt_rts_data_v1(x)
+  assert_classes.csfmt_rts_data_v2(x)
 
   # making sure that granularity_time is taken care of
   # if granularity_time doesn't exist, then make it exist
@@ -516,6 +558,8 @@ heal.csfmt_rts_data_v1 <- function(x, ...) {
     "isoyear",
     "isoweek",
     "isoyearweek",
+    "isoquarter",
+    "isoyearquarter",
     "season",
     "seasonweek",
     "calyear",
@@ -524,7 +568,7 @@ heal.csfmt_rts_data_v1 <- function(x, ...) {
     "date"
   )
   time_vars <- time_vars[time_vars %in% names(x)]
-  time_vars_to_loop_through <- time_vars[time_vars %in% c("isoyear","isoyearweek","date")]
+  time_vars_to_loop_through <- time_vars[time_vars %in% c("isoyear", "isoyearweek", "season", "date")]
   for(i in time_vars_to_loop_through){
     other_time_vars <- time_vars[time_vars != i]
     time_var_as_granularity_geo <- i
@@ -558,6 +602,8 @@ heal.csfmt_rts_data_v1 <- function(x, ...) {
     "isoyear" = c(
       "isoweek",
       "isoyearweek",
+      "isoquarter",
+      "isoyearquarter",
       "season",
       "seasonweek",
       "calyear",
@@ -568,7 +614,21 @@ heal.csfmt_rts_data_v1 <- function(x, ...) {
     "isoyearweek" = c(
       "isoyear",
       "isoweek",
+      "isoquarter",
+      "isoyearquarter",
       "season",
+      "seasonweek",
+      "calyear",
+      "calmonth",
+      "calyearmonth",
+      "date"
+    ),
+    "season" = c(
+      "isoyear",
+      "isoweek",
+      "isoyearweek",
+      "isoquarter",
+      "isoyearquarter",
       "seasonweek",
       "calyear",
       "calmonth",
@@ -579,6 +639,8 @@ heal.csfmt_rts_data_v1 <- function(x, ...) {
       "isoyear",
       "isoweek",
       "isoyearweek",
+      "isoquarter",
+      "isoyearquarter",
       "season",
       "seasonweek",
       "calyear",
@@ -627,7 +689,7 @@ heal.csfmt_rts_data_v1 <- function(x, ...) {
   return(invisible(x))
 }
 
-create_unified_columns.csfmt_rts_data_v1 <- function(x, ...) {
+create_unified_columns.csfmt_rts_data_v2 <- function(x, ...) {
   fmt <- attr(x, "format_unified")
   for (i in names(fmt)) {
     if (!i %in% names(x)) {
@@ -638,7 +700,7 @@ create_unified_columns.csfmt_rts_data_v1 <- function(x, ...) {
   setcolorder(x, names(fmt))
 
   # heal it
-  heal.csfmt_rts_data_v1(x)
+  heal.csfmt_rts_data_v2(x)
 
   # allows us to print
   data.table::shouldPrint(x)
@@ -646,7 +708,8 @@ create_unified_columns.csfmt_rts_data_v1 <- function(x, ...) {
   return(invisible(x))
 }
 
-assert_classes.csfmt_rts_data_v1 <- function(x, ...) {
+
+assert_classes.csfmt_rts_data_v2 <- function(x, ...) {
   fmt <- attr(x, "format_unified")
   classes_real <- lapply(x, class)
   classes_wanted <- lapply(fmt, function(x) {
@@ -672,14 +735,14 @@ assert_classes.csfmt_rts_data_v1 <- function(x, ...) {
   return(invisible(x))
 }
 
-#' Convert data.table to csfmt_rts_data_v1 (deprecated)
+#' Convert data.table to csfmt_rts_data_v2
 #'
 #' @description
-#' \code{set_csfmt_rts_data_v1} converts a \code{data.table} to \code{csfmt_rts_data_v1} by reference.
-#' \code{csfmt_rts_data_v1} creates a new \code{csfmt_rts_data_v1} (not by reference) from either a \code{data.table} or \code{data.frame}.
+#' \code{set_csfmt_rts_data_v2} converts a \code{data.table} to \code{csfmt_rts_data_v2} by reference.
+#' \code{csfmt_rts_data_v2} creates a new \code{csfmt_rts_data_v2} (not by reference) from either a \code{data.table} or \code{data.frame}.
 #'
 #' @section Smart assignment:
-#' \code{csfmt_rts_data_v1} contains the smart assignment feature for time and geography.
+#' \code{csfmt_rts_data_v2} contains the smart assignment feature for time and geography.
 #'
 #' When the **variables in bold** are assigned using `:=`, the listed variables will be automatically imputed.
 #'
@@ -691,6 +754,8 @@ assert_classes.csfmt_rts_data_v1 <- function(x, ...) {
 #' - granularity_time
 #' - isoweek
 #' - isoyearweek
+#' - isoquarter
+#' - isoyearquarter
 #' - season
 #' - seasonweek
 #' - calyear
@@ -702,7 +767,22 @@ assert_classes.csfmt_rts_data_v1 <- function(x, ...) {
 #' - granularity_time
 #' - isoyear
 #' - isoweek
+#' - isoquarter
+#' - isoyearquarter
 #' - season
+#' - seasonweek
+#' - calyear
+#' - calmonth
+#' - calyearmonth
+#' - date
+#'
+#' **season**:
+#' - granularity_time
+#' - isoyear
+#' - isoweek
+#' - isoyearweek
+#' - isoquarter
+#' - isoyearquarter
 #' - seasonweek
 #' - calyear
 #' - calmonth
@@ -714,6 +794,8 @@ assert_classes.csfmt_rts_data_v1 <- function(x, ...) {
 #' - isoyear
 #' - isoweek
 #' - isoyearweek
+#' - isoquarter
+#' - isoyearquarter
 #' - season
 #' - seasonweek
 #' - calyear
@@ -721,7 +803,7 @@ assert_classes.csfmt_rts_data_v1 <- function(x, ...) {
 #' - calyearmonth
 #'
 #' @section Unified columns:
-#' \code{csfmt_rts_data_v1} contains 16 unified columns:
+#' \code{csfmt_rts_data_v2} contains 16 unified columns:
 #' - granularity_time
 #' - granularity_geo
 #' - country_iso3
@@ -732,6 +814,8 @@ assert_classes.csfmt_rts_data_v1 <- function(x, ...) {
 #' - isoyear
 #' - isoweek
 #' - isoyearweek
+#' - isoquarter
+#' - isoyearquarter
 #' - season
 #' - seasonweek
 #' - calyear
@@ -739,40 +823,73 @@ assert_classes.csfmt_rts_data_v1 <- function(x, ...) {
 #' - calyearmonth
 #' - date
 #'
+#' @details
+#' For more details see the vignette:
+#' \code{vignette("csfmt_rts_data_v2", package = "cstidy")}
+#'
 #' @return An extended \code{data.table}, which has been modified by reference and returned (invisibly).
 #'
-#' @param x The data.table to be converted to csfmt_rts_data_v1
+#' @param x The data.table to be converted to csfmt_rts_data_v2
 #' @param create_unified_columns Do you want it to create unified columns?
 #' @param heal Do you want to impute missing values on creation?
+#' @examples
+#' # Create some fake data as data.table
+#' d <- cstidy::generate_test_data(fmt = "csfmt_rts_data_v2")
+#' d <- d[1:5]
+#'
+#' # convert to csfmt_rts_data_v2 by reference
+#' cstidy::set_csfmt_rts_data_v2(d, create_unified_columns = TRUE)
+#'
+#' #
+#' d[1, isoyearweek := "2021-01"]
+#' d
+#' d[2, isoyear := 2019]
+#' d
+#' d[3, date := as.Date("2020-01-01")]
+#' d
+#' d[4, c("isoyear", "isoyearweek") := .(2021, "2021-01")]
+#' d
+#' d[5, c("location_code") := .("norge")]
+#' d
+#'
+#' # Investigating the data structure of one column inside a dataset
+#' cstidy::generate_test_data() %>%
+#'   cstidy::set_csfmt_rts_data_v2() %>%
+#'   cstidy::identify_data_structure("deaths_n") %>%
+#'   plot()
+#' # Investigating the data structure via summary
+#' cstidy::generate_test_data() %>%
+#'   cstidy::set_csfmt_rts_data_v2() %>%
+#'   summary()
 #' @family csfmt_rts_data
-#' @returns No return value, called for side effect of replacing the current data.table with a csfmt_rts_data_v1 in place.
+#' @returns No return value, called for side effect of replacing the current data.table with a csfmt_rts_data_v2 in place.
 #' @export
-set_csfmt_rts_data_v1 <- function(x, create_unified_columns = TRUE, heal = TRUE) {
+set_csfmt_rts_data_v2 <- function(x, create_unified_columns = TRUE, heal = TRUE) {
   if (!is.data.table(x)) {
     stop("x must be data.table. Run setDT('x').")
   }
 
-  fmt <- formats$csfmt_rts_data_v1$unified
+  fmt <- formats$csfmt_rts_data_v2$unified
   setattr(x, "format_unified", fmt)
-  setattr(x, "class", unique(c("csfmt_rts_data_v1", class(x))))
+  setattr(x, "class", unique(c("csfmt_rts_data_v2", class(x))))
 
   if (create_unified_columns) {
-    create_unified_columns.csfmt_rts_data_v1(x)
+    create_unified_columns.csfmt_rts_data_v2(x)
   }
 
   if (heal) {
-    heal.csfmt_rts_data_v1(x)
+    heal.csfmt_rts_data_v2(x)
   }
 
   return(invisible(x))
 }
 
-#' @rdname set_csfmt_rts_data_v1
-#' @returns Returns a duplicated csfmt_rts_data_v1.
+#' @rdname set_csfmt_rts_data_v2
+#' @returns Returns a duplicated csfmt_rts_data_v2.
 #' @export
-csfmt_rts_data_v1 <- function(x, create_unified_columns = TRUE, heal = TRUE) {
+csfmt_rts_data_v2 <- function(x, create_unified_columns = TRUE, heal = TRUE) {
   y <- copy(x)
-  set_csfmt_rts_data_v1(
+  set_csfmt_rts_data_v2(
     y,
     create_unified_columns,
     heal
@@ -781,10 +898,10 @@ csfmt_rts_data_v1 <- function(x, create_unified_columns = TRUE, heal = TRUE) {
   return(y)
 }
 
-#' @method summary csfmt_rts_data_v1
+#' @method summary csfmt_rts_data_v2
 #' @returns No return value, called for side effect of printing a summary of the object.
 #' @export
-summary.csfmt_rts_data_v1 <- function(object, ...) {
+summary.csfmt_rts_data_v2 <- function(object, ...) {
   . <- NULL
   val <- NULL
   len <- NULL
@@ -881,18 +998,201 @@ summary.csfmt_rts_data_v1 <- function(object, ...) {
   cat("\n")
 }
 
+identify_data_structure_internal <- function(summarized, col) {
+  . <- NULL
+  num_valid <- NULL
+  num_na <- NULL
+  category <- NULL
+  age <- NULL
+  sex <- NULL
+  granularity_geo <- NULL
+  # we expect a data.table with columns:
+  # - granularity_time
+  # - granularity_geo
+  # - age
+  # - sex
+  # - num_valid
+  # - num_na
 
+  skeleton <- CJ(
+    granularity_time = c("isoyear", "isoyearweek", "date"),
+    granularity_geo = unique(csdata::nor_locations_names()$granularity_geo),
+    age = unique(summarized$age),
+    sex = unique(summarized$sex)
+  )
+  skeleton[
+    summarized,
+    on = c("granularity_time", "granularity_geo", "age", "sex"),
+    c("num_valid", "num_na") := .(num_valid, num_na)
+  ]
+  skeleton[is.na(num_valid), num_valid := 0]
+  skeleton[is.na(num_na), num_na := 0]
 
-#' @method plot csfmt_rts_data_structure_hash_v1
+  skeleton[, category := dplyr::case_when(
+    num_valid == 0 & num_na == 0 ~ "structurally_missing",
+    num_valid == 0 & num_na > 0 ~ "only_na",
+    num_valid > 0 & num_na == 0 ~ "only_data",
+    num_valid > 0 & num_na > 0 ~ "data_and_na",
+  )]
+  skeleton[is.na(age), age := "missing"]
+  skeleton[is.na(sex), sex := "missing"]
+
+  skeleton[, num_valid := NULL]
+  skeleton[, num_na := NULL]
+  skeleton[, granularity_geo := factor(granularity_geo, levels = unique(csdata::nor_locations_names()$granularity_geo))]
+
+  # check if can merge together age groups
+  skeleton_wide <- dcast.data.table(
+    skeleton,
+    granularity_time + granularity_geo + sex ~ age,
+    value.var = "category"
+  )
+
+  equality <- diag(ncol(skeleton_wide)-3)
+  colnames(equality) <- names(skeleton_wide)[4:ncol(skeleton_wide)]
+  rownames(equality) <- names(skeleton_wide)[4:ncol(skeleton_wide)]
+  for (i in 4:ncol(skeleton_wide)) {
+    for (j in 4:ncol(skeleton_wide)) {
+      if (sum(skeleton_wide[[i]] != skeleton_wide[[j]]) == 0) equality[i - 3, j - 3] <- 1
+    }
+  }
+  while (nrow(equality) > 0) {
+    if (sum(equality[1, ]) > 1) {
+      names_to_sum <- colnames(equality)[equality[1, ] == 1]
+      end_name <- paste0(names_to_sum, collapse = ",")
+      skeleton_wide[, (end_name) := get(names_to_sum[1])]
+      for (i in names_to_sum) {
+        # delete the data in the skeleton
+        skeleton_wide[, (i) := NULL]
+        # delete the data in the equality matrix
+        equality <- equality[-which(rownames(equality) == i), , drop = FALSE]
+      }
+    } else {
+      equality <- equality[-1, , drop = FALSE]
+    }
+  }
+
+  skeleton <- melt.data.table(
+    skeleton_wide,
+    id.vars = c("granularity_time", "granularity_geo", "sex"),
+    variable.factor = FALSE,
+    variable.name = "age",
+    value.name = "category"
+  )
+
+  skeleton_wide <- dcast.data.table(
+    skeleton,
+    granularity_time + age + sex ~ granularity_geo,
+    value.var = "category"
+  )
+
+  # delete columns that are just structurally_missing and furthest to the right
+  for (i in rev(names(skeleton_wide))) {
+    if (i == "municip") {
+      break()
+    } else if (sum(skeleton_wide[[i]] != "structurally_missing", na.rm = T) == 0) {
+      skeleton_wide[, (i) := NULL]
+    } else {
+      break()
+    }
+  }
+
+  skeleton_long <- melt.data.table(
+    skeleton_wide,
+    id.vars = c("granularity_time", "age", "sex"),
+    variable.factor = FALSE,
+    variable.name = "granularity_geo",
+    value.name = "category"
+  )
+
+  setattr(skeleton_long, "class", unique(c("csfmt_rts_data_structure_hash_v2", class(skeleton_long))))
+
+  return(invisible(skeleton_long))
+}
+
+#' @method identify_data_structure csfmt_rts_data_v2
+#' @rdname identify_data_structure
 #' @export
-plot.csfmt_rts_data_structure_hash_v1 <- function(x, y, ...) {
+identify_data_structure.csfmt_rts_data_v2 <- function(x, col, ...) {
+  . <- NULL
+  granularity_time <- NULL
+  granularity_geo <- NULL
+  age <- NULL
+  sex <- NULL
+  var <- NULL
+  # col <-
+  # Take in the data table
+  # data <- data$cases
+  # data <- data$vax
+
+  summarized <- x[, .(
+    num_valid = sum(!is.na(get(col))),
+    num_na = sum(is.na(get(col)))
+  ),
+  keyby = .(
+    granularity_time,
+    granularity_geo,
+    age,
+    sex
+  )
+  ]
+
+  identify_data_structure_internal(
+    summarized,
+    var
+  )
+}
+
+#' @rdname identify_data_structure
+#' @export
+"identify_data_structure.tbl_Microsoft SQL Server" <- function(x, col, ...) {
+  granularity_time <- NULL
+  granularity_geo <- NULL
+  age <- NULL
+  sex <- NULL
+  n <- NULL
+  num_total <- NULL
+  num_na <- NULL
+  # col <-
+  # Take in the data table
+  # data <- data$cases
+  # data <- data$vax
+
+  summarized <- x %>%
+    dplyr::rename(col = !!col) %>%
+    dplyr::group_by(
+      granularity_time,
+      granularity_geo,
+      age,
+      sex
+    ) %>%
+    dplyr::summarize(
+      num_total = n(),
+      num_na = sum(as.numeric(is.na(col)))
+    ) %>%
+    dplyr::mutate(
+      num_valid = num_total - num_na
+    ) %>%
+    dplyr::select(-num_total) %>%
+    dplyr::collect() %>%
+    as.data.table()
+
+  identify_data_structure_internal(
+    summarized,
+    col
+  )
+}
+
+#' @method plot csfmt_rts_data_structure_hash_v2
+#' @export
+plot.csfmt_rts_data_structure_hash_v2 <- function(x, y, ...) {
   granularity_geo <- NULL
   category <- NULL
   age <- NULL
   sex <- NULL
 
   # x <- generate_test_data() %>%
-  #   set_csfmt_rts_data_v1() %>%
+  #   set_csfmt_rts_data_v2() %>%
   #   identify_data_structure("deaths_n")
 
   pd <- copy(x)
@@ -912,9 +1212,9 @@ plot.csfmt_rts_data_structure_hash_v1 <- function(x, y, ...) {
   q
 }
 
-#' @method unique_time_series csfmt_rts_data_v1
+#' @method unique_time_series csfmt_rts_data_v2
 #' @export
-unique_time_series.csfmt_rts_data_v1 <- function(x, set_time_series_id = FALSE, ...) {
+unique_time_series.csfmt_rts_data_v2 <- function(x, set_time_series_id = FALSE, ...) {
   time_series_id <- NULL
 
   ids <- unique(
@@ -950,21 +1250,21 @@ unique_time_series.csfmt_rts_data_v1 <- function(x, set_time_series_id = FALSE, 
   return(retval)
 }
 
-#' @method expand_time_to csfmt_rts_data_v1
+#' @method expand_time_to csfmt_rts_data_v2
 #' @export
-expand_time_to.csfmt_rts_data_v1 <- function(x, max_isoyear = NULL, max_isoyearweek = NULL, max_date = NULL, ...) {
+expand_time_to.csfmt_rts_data_v2 <- function(x, max_isoyear = NULL, max_isoyearweek = NULL, max_date = NULL, ...) {
   if(is.null(max_isoyear) & is.null(max_isoyearweek) & is.null(max_date)){
     stop("At least one of max_isoyear, max_isoyearweek, max_date must be used")
   }
   d1 <- d2 <- d3 <- NULL
   if(!is.null(max_isoyear)){
-    d1 <- expand_time_to_max_isoyear.csfmt_rts_data_v1(x, max_isoyear = max_isoyear)
+    d1 <- expand_time_to_max_isoyear.csfmt_rts_data_v2(x, max_isoyear = max_isoyear)
   }
   if(!is.null(max_isoyearweek)){
-    d2 <- expand_time_to_max_isoyearweek.csfmt_rts_data_v1(x, max_isoyearweek = max_isoyearweek)
+    d2 <- expand_time_to_max_isoyearweek.csfmt_rts_data_v2(x, max_isoyearweek = max_isoyearweek)
   }
   if(!is.null(max_date)){
-    d3 <- expand_time_to_max_date.csfmt_rts_data_v1(x, max_date = max_date)
+    d3 <- expand_time_to_max_date.csfmt_rts_data_v2(x, max_date = max_date)
   }
   retval <- rbindlist(list(d1,d2,d3), fill = T)
 
@@ -974,7 +1274,7 @@ expand_time_to.csfmt_rts_data_v1 <- function(x, max_isoyear = NULL, max_isoyearw
   return(retval)
 }
 
-expand_time_to_max_isoyear.csfmt_rts_data_v1 <- function(x, max_isoyear = NULL, ...) {
+expand_time_to_max_isoyear.csfmt_rts_data_v2 <- function(x, max_isoyear = NULL, ...) {
   granularity_time <- NULL
   time_series_id <- NULL
   isoyear <- NULL
@@ -1009,7 +1309,7 @@ expand_time_to_max_isoyear.csfmt_rts_data_v1 <- function(x, max_isoyear = NULL, 
   retval <- rbindlist(retval)
 
   x <- rbindlist(list(d, retval), fill = T)
-  cstidy::set_csfmt_rts_data_v1(x)
+  cstidy::set_csfmt_rts_data_v2(x)
   setorder(x, time_series_id, date)
 
   if(flag_to_remove_time_series_id) x[, time_series_id := NULL]
@@ -1022,7 +1322,9 @@ expand_time_to_max_isoyear.csfmt_rts_data_v1 <- function(x, max_isoyear = NULL, 
   return(x)
 }
 
-expand_time_to_max_isoyearweek.csfmt_rts_data_v1 <- function(x, max_isoyearweek = NULL, ...) {
+
+
+expand_time_to_max_isoyearweek.csfmt_rts_data_v2 <- function(x, max_isoyearweek = NULL, ...) {
   granularity_time <- NULL
   time_series_id <- NULL
   isoyearweek <- NULL
@@ -1059,7 +1361,7 @@ expand_time_to_max_isoyearweek.csfmt_rts_data_v1 <- function(x, max_isoyearweek 
   retval <- rbindlist(retval)
 
   x <- rbindlist(list(d, retval), fill = T)
-  cstidy::set_csfmt_rts_data_v1(x)
+  cstidy::set_csfmt_rts_data_v2(x)
   setorder(x, time_series_id, date)
 
   if(flag_to_remove_time_series_id) x[, time_series_id := NULL]
@@ -1072,7 +1374,7 @@ expand_time_to_max_isoyearweek.csfmt_rts_data_v1 <- function(x, max_isoyearweek 
   return(x)
 }
 
-expand_time_to_max_date.csfmt_rts_data_v1 <- function(x, max_date = NULL, ...) {
+expand_time_to_max_date.csfmt_rts_data_v2 <- function(x, max_date = NULL, ...) {
   granularity_time <- NULL
   time_series_id <- NULL
   max_current_date <- NULL
@@ -1106,7 +1408,7 @@ expand_time_to_max_date.csfmt_rts_data_v1 <- function(x, max_date = NULL, ...) {
   retval <- rbindlist(retval)
 
   x <- rbindlist(list(d, retval), fill = T)
-  cstidy::set_csfmt_rts_data_v1(x)
+  cstidy::set_csfmt_rts_data_v2(x)
   setorder(x, time_series_id, date)
 
   if(flag_to_remove_time_series_id) x[, time_series_id := NULL]
@@ -1126,11 +1428,11 @@ expand_time_to_max_date.csfmt_rts_data_v1 <- function(x, max_date = NULL, ...) {
 # #' @param x Dataset
 # #' @param ... X
 # #' @examples
-# #' csstyle::plot_epicurve(cstidy::nor_covid19_cases_by_time_location_csfmt_rts_v1[location_code == "county03"], type = "single", var_y = "covid19_cases_testdate_n")
+# #' csstyle::plot_epicurve(cstidy::nor_covid19_cases_by_time_location_csfmt_rts_v2[location_code == "county03"], type = "single", var_y = "covid19_cases_testdate_n")
 # #' @importFrom csstyle plot_epicurve
-# #' @method plot_epicurve csfmt_rts_data_v1
+# #' @method plot_epicurve csfmt_rts_data_v2
 # #' @export
-# plot_epicurve.csfmt_rts_data_v1 <- function(
+# plot_epicurve.csfmt_rts_data_v2 <- function(
 #   x,
 #   ...
 #   ) {

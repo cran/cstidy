@@ -19,13 +19,13 @@ library(data.table)
 library(magrittr)
 ```
 
-# csfmt_rts_data_v1
+# csfmt_rts_data_v2
 
-csfmt_rts_data_v1 (`vignette("csfmt_rts_data_v1", package = "cstidy")`) is a data format for real-time surveillance.
+csfmt_rts_data_v2 (`vignette("csfmt_rts_data_v2", package = "cstidy")`) is a data format for real-time surveillance.
 
 ```{r}
 d <- cstidy::generate_test_data()
-cstidy::set_csfmt_rts_data_v1(d)
+cstidy::set_csfmt_rts_data_v2(d)
 
 # Looking at the dataset
 d[]
@@ -33,7 +33,7 @@ d[]
 
 ## Smart assignment
 
-`csfmt_rts_data_v1` does smart assignment for time and geography.
+`csfmt_rts_data_v2` does smart assignment for time and geography.
 
 When the **variables in bold** are assigned using `:=`, the listed variables will be automatically imputed.
 
@@ -80,7 +80,7 @@ When the **variables in bold** are assigned using `:=`, the listed variables wil
 
 ```{r}
 d <- cstidy::generate_test_data()[1:5]
-cstidy::set_csfmt_rts_data_v1(d)
+cstidy::set_csfmt_rts_data_v2(d)
 
 # Looking at the dataset
 d[]
@@ -108,10 +108,10 @@ d
 # Collapsing down to different levels, and healing the dataset 
 # (so that it can be worked on further with regards to real time surveillance)
 d[, .(deaths_n = sum(deaths_n), location_code = "norge"), keyby=.(granularity_time)] %>%
-  cstidy::set_csfmt_rts_data_v1(create_unified_columns = FALSE) %>%
+  cstidy::set_csfmt_rts_data_v2(create_unified_columns = FALSE) %>%
   print()
 
-# Collapsing to different levels, and removing the class csfmt_rts_data_v1 because
+# Collapsing to different levels, and removing the class csfmt_rts_data_v2 because
 # it is going to be used in new output/analyses
 d[, .(deaths_n = sum(deaths_n), location_code = "norge"), keyby=.(granularity_time)] %>%
   cstidy::remove_class_csfmt_rts_data() %>%
@@ -124,7 +124,7 @@ We need a way to easily summarize the data structure of a dataset.
 
 ```{r}
 cstidy::generate_test_data() %>%
-  cstidy::set_csfmt_rts_data_v1() %>%
+  cstidy::set_csfmt_rts_data_v2() %>%
   summary()
 ```
 
@@ -134,7 +134,7 @@ We need a way to easily summarize the data structure of one column inside a data
 
 ```{r}
 cstidy::generate_test_data() %>%
-  cstidy::set_csfmt_rts_data_v1() %>%
+  cstidy::set_csfmt_rts_data_v2() %>%
   cstidy::identify_data_structure("deaths_n") %>%
   plot()
 ```

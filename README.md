@@ -1,5 +1,8 @@
 # cstidy <a href="https://www.csids.no/cstidy/"><img src="man/figures/logo.png" align="right" width="120" /></a>
 
+[![CRAN status](https://www.r-pkg.org/badges/version/cstidy)](https://cran.r-project.org/package=cstidy)
+[![CRAN downloads](https://cranlogs.r-pkg.org/badges/cstidy)](https://cran.r-project.org/package=cstidy)
+
 ## Overview 
 
 [cstidy](https://www.csids.no/cstidy/) contains helpful functions for the cleaning and manipulation of surveillance data, especially with regards to the creation and validation of panel data from individual level surveillance data.
@@ -12,24 +15,18 @@ Read the introduction vignette [here](https://www.csids.no/cstidy/articles/cstid
 
 The [csverse](https://www.csids.no/packages.html) is a set of R packages developed to help solve problems that frequently occur when performing disease surveillance.
 
-If you want to install the dev versions (or access packages that haven't been released on CRAN), run `usethis::edit_r_profile()` to edit your `.Rprofile`. 
-
-Then write in:
-
 ```
-options(
-  repos = structure(c(
-    CSVERSE = "https://www.csids.no/drat/",
-    CRAN    = "https://cran.rstudio.com"
-  ))
-)
-```
-
-Save the file and restart R.
-
-You can now install [csverse](https://www.csids.no/packages.html) packages from our [drat repository](https://www.csids.no/drat/).
-
-```
+install.packages("attrib")
+install.packages("cs9")
+install.packages("csalert")
+install.packages("csdata")
+install.packages("csdb")
+install.packages("csmaps")
+install.packages("csstyle")
 install.packages("cstidy")
+install.packages("cstime")
+install.packages("csutil")
+install.packages("org")
+install.packages("plnr")
 ```
 

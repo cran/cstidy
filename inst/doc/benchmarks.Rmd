@@ -13,4 +13,7 @@ editor_options:
 
 ## set_csfmt_rts_data_v1
 
+<div class="figure">
 <img src="benchmarks-unnamed-chunk-1-1.png" alt="plot of chunk unnamed-chunk-1" width="100%" />
+<p class="caption">plot of chunk unnamed-chunk-1</p>
+</div>

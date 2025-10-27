@@ -3,7 +3,7 @@
 \name{set_csfmt_rts_data_v1}
 \alias{set_csfmt_rts_data_v1}
 \alias{csfmt_rts_data_v1}
-\title{Convert data.table to csfmt_rts_data_v1}
+\title{Convert data.table to csfmt_rts_data_v1 (deprecated)}
 \usage{
 set_csfmt_rts_data_v1(x, create_unified_columns = TRUE, heal = TRUE)
 
@@ -26,10 +26,6 @@ Returns a duplicated csfmt_rts_data_v1.
 \description{
 \code{set_csfmt_rts_data_v1} converts a \code{data.table} to \code{csfmt_rts_data_v1} by reference.
 \code{csfmt_rts_data_v1} creates a new \code{csfmt_rts_data_v1} (not by reference) from either a \code{data.table} or \code{data.frame}.
-}
-\details{
-For more details see the vignette:
-\code{vignette("csfmt_rts_data_v1", package = "cstidy")}
 }
 \section{Smart assignment}{
 
@@ -106,41 +102,12 @@ When the \strong{variables in bold} are assigned using \verb{:=}, the listed var
 }
 }
 
-\examples{
-# Create some fake data as data.table
-d <- cstidy::generate_test_data(fmt = "csfmt_rts_data_v1")
-d <- d[1:5]
-
-# convert to csfmt_rts_data_v1 by reference
-cstidy::set_csfmt_rts_data_v1(d, create_unified_columns = TRUE)
-
-#
-d[1, isoyearweek := "2021-01"]
-d
-d[2, isoyear := 2019]
-d
-d[3, date := as.Date("2020-01-01")]
-d
-d[4, c("isoyear", "isoyearweek") := .(2021, "2021-01")]
-d
-d[5, c("location_code") := .("norge")]
-d
-
-# Investigating the data structure of one column inside a dataset
-cstidy::generate_test_data() \%>\%
-  cstidy::set_csfmt_rts_data_v1() \%>\%
-  cstidy::identify_data_structure("deaths_n") \%>\%
-  plot()
-# Investigating the data structure via summary
-cstidy::generate_test_data() \%>\%
-  cstidy::set_csfmt_rts_data_v1() \%>\%
-  summary()
-}
 \seealso{
 Other csfmt_rts_data: 
 \code{\link{expand_time_to}()},
 \code{\link{identify_data_structure}()},
 \code{\link{remove_class_csfmt_rts_data}()},
+\code{\link{set_csfmt_rts_data_v2}()},
 \code{\link{unique_time_series}()}
 }
 \concept{csfmt_rts_data}

@@ -1,6 +1,6 @@
 Package: cstidy
 Title: Helpful Functions for Cleaning Surveillance Data
-Version: 2023.5.24
+Version: 2025.10.27
 Authors@R: c(
   person(c("Richard","Aubrey"), "White", email = "hello@rwhite.no", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-6747-1726")),
   person(given = "CSIDS", role = c("cph"))
@@ -19,10 +19,10 @@ Suggests: testthat, knitr, rmarkdown, rstudioapi, glue, gt, dplyr,
 RoxygenNote: 7.2.3
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2023-05-23 08:15:56 UTC; raw996
-Author: Richard Aubrey White [aut, cre]
-    (<https://orcid.org/0000-0002-6747-1726>),
+Packaged: 2025-10-27 10:47:14 UTC; raw996
+Author: Richard Aubrey White [aut, cre] (ORCID:
+    <https://orcid.org/0000-0002-6747-1726>),
   CSIDS [cph]
 Maintainer: Richard Aubrey White <hello@rwhite.no>
 Repository: CRAN
-Date/Publication: 2023-05-24 07:40:02 UTC
+Date/Publication: 2025-10-27 11:30:02 UTC
